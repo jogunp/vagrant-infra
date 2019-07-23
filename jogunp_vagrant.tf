@@ -7,4 +7,4 @@ resource "vagrant_vm" "jogunp_vagrant_vm" {
   env = {
     VAGRANTFILE_HASH = "${md5(file("./Vagrantfile"))}",
   }
-}
+
