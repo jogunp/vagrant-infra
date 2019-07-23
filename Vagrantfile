@@ -36,3 +36,13 @@ Vagrant.configure("2") do |config|
     config.ignition.config_obj = vb
   end
 end
+
+Vagrant.configure("2") do |config|
+
+  
+  # Code for running Ansible from the Vagrant Host
+  
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "jogunp_playbook.yml"
+  end
+end
