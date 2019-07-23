@@ -1,5 +1,3 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
 
 required_plugins_vagrant = %w(vagrant-ignition)
 vagrant_plugins_to_install = required_plugins_vagrant.reject(&Vagrant.method(:has_plugin?))
@@ -41,15 +39,13 @@ Vagrant.configure("2") do |config|
 
   
   # Code for running Ansible from the Vagrant Host
-  
+  #-------------------------------------------------
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "jogunp_playbook.yml"
   end
   
+  # Configure the IP address and ports
+  #-------------------------------------
   config.vm.network "private_network", ip: "192.168.30.33"
-  end
   config.vm.network "forwarded_port", guest: 80, host: 8080
   end
-end
-
-
