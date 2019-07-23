@@ -4,7 +4,7 @@
   vars:
     pb_create_containers: 1
     pb_default_container_name: docker
-    pb_default_container_image: ubuntu
+    pb_default_container_image: alpine:latest
     pb_default_container_command: sleep 1d
 
   tasks:
