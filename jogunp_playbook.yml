@@ -5,8 +5,7 @@
     pb_create_containers: 1
     pb_default_container_name: docker
     pb_default_container_image: alpine:latest
-    pb_default_container_command: sleep 1d
-
+   
   tasks:
     
     - name: Install prerequisites
@@ -39,7 +38,19 @@
       docker_container:
         name: "{{ pb_default_container_name }}{{ item }}"
         image: "{{ pb_default_container_image }}"
-        command: "{{ pb_default_container_command }}"
-        state: present
+        state: started
       with_sequence: count={{ pb_create_containers }}
-      
+    
+    # Install nginx with web server
+    - name: Installs nginx web server
+      apt: pkg=nginx state=installed update_cache=true
+      notify:
+        - start nginx
+
+    - name: Upload default index.html for host
+      copy: src=web_files/index.html dest=/usr/share/nginx/www/ mode=0644
+
+  handlers:
+    - name: start nginx
+      service: name=nginx state=started
+          state: started
