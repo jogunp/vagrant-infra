@@ -46,3 +46,7 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "jogunp_playbook.yml"
   end
 end
+
+
+config.vm.network "private_network", ip: "127.0.0.1"
+end
