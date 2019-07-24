@@ -1,4 +1,4 @@
-# vagrant-infra
+# Jogunp vagrant-infra Demo
 Vagrant Infrastructure
 
 a) Run the following:
